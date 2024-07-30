@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <script src="login.js"></script>
+    <title>Login</title>
+</head>
+<body>
+    <Header>
+        <nav id="navbar" class="bg-gray-200 shadow shadow-gray-300 w-100 px-8 md:px-auto">
+        </nav>
+    </Header>
+
+    <div class="flex items-center justify-center p-12">
+        <div class="mx-auto w-full max-w-[550px] bg-white">
+            <form>
+                <div class="mb-5">
+                    <label for="username" class="mb-3 block text-base font-medium text-[#07074D]">
+                        User Name
+                    </label>
+                    <input type="text" name="username" id="username" placeholder="User name"
+                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                </div>
+                <div class="mb-5">
+                    <label for="password" class="mb-3 block text-base font-medium text-[#07074D]">
+                        Password
+                    </label>
+                    <input type="password" name="password" id="password" placeholder="Enter your password"
+                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                </div>
+                <div>
+                    <button onclick=handle_login(event)
+                        class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
+                        Login
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <Footer id="footer-section">
+
+    </Footer>
+    <script src="nav.js"></script>
+    <script src="footer.js"></script>
+</body>
+</html>
