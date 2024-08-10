@@ -1,6 +1,6 @@
 const loadData = () => {
     const id = localStorage.getItem('user_id')
-    fetch(`https://hotel-booking-backend-u4dd.onrender.com/customer/list/${id}/`)
+    fetch(`https://hussainrifad.pythonanywhere.com/customer/list/${id}/`)
     .then(res => res.json())
     .then(data => {
         console.log(data);
@@ -27,7 +27,7 @@ const update_data = (event) => {
         phone,
     }
 
-    fetch(`https://hotel-booking-backend-u4dd.onrender.com/customer/list/${id}/`,
+    fetch(`https://hussainrifad.pythonanywhere.com/customer/list/${id}/`,
         {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },

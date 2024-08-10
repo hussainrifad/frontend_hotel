@@ -1,5 +1,5 @@
 const fetch_hotel = async () => {
-    fetch('https://hotel-booking-backend-u4dd.onrender.com/hotel/list/?format=json')
+    fetch('https://hussainrifad.pythonanywhere.com/hotel/list/?format=json')
     .then(res => res.json())
     .then((data) => {
         display_hotel(data)

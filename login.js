@@ -7,7 +7,7 @@ const handle_login = (event) => {
     }
     console.log(info);
 
-    fetch('https://hotel-booking-backend-u4dd.onrender.com/customer/login/',
+    fetch('https://hussainrifad.pythonanywhere.com/customer/login/',
         {
             method : 'POST',
             headers : {'Content-Type':'application/json'},
@@ -27,7 +27,7 @@ const handle_login = (event) => {
 const handle_logout = (event) => {
     event.preventDefault();
 
-    fetch('https://hotel-booking-backend-u4dd.onrender.com/customer/logout/')
+    fetch('https://hussainrifad.pythonanywhere.com/customer/logout/')
     .then(res => res.json())
     .then(data => console.log(data))
     .catch(error => console.log(error))

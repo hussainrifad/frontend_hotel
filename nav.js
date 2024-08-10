@@ -56,7 +56,7 @@ navBar()
 const logout = () => {
     const token = localStorage.getItem('token')
 
-    fetch(`https://hotel-booking-backend-u4dd.onrender.com/customer/logout/`,{
+    fetch(`https://hussainrifad.pythonanywhere.com/customer/logout/`,{
         method : 'GET',
         headers:{
             Authorization: `Token ${token}`,

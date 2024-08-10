@@ -25,7 +25,7 @@ const handle_registration = (event) => {
         phone,
     }
 
-    fetch('https://hotel-booking-backend-u4dd.onrender.com/customer/registration/',
+    fetch('https://hussainrifad.pythonanywhere.com/customer/registration/',
         {
             method : 'POST',
             headers: {'Content-Type': "application/json"},

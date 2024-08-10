@@ -1,6 +1,6 @@
 const hotel_detail = () => {
     const id = new URLSearchParams(window.location.search).get("hotelId")
-    fetch(`https://hotel-booking-backend-u4dd.onrender.com/hotel/list/${id}/?format=json`)
+    fetch(`https://hussainrifad.pythonanywhere.com/hotel/list/${id}/?format=json`)
     .then(res => res.json())
     .then((data) => {
         render_details(data)
@@ -48,7 +48,7 @@ const render_details = (hotel) => {
 }
 
 const fetch_reviews = (id) => {
-    fetch(`https://hotel-booking-backend-u4dd.onrender.com/hotel/reviews/get/${id}/?format=json`)
+    fetch(`https://hussainrifad.pythonanywhere.com/hotel/reviews/get/${id}/?format=json`)
     .then(res => res.json())
     .then((data) => {
         render_reviews(data)
@@ -136,7 +136,7 @@ const book_confirmation = (hotelId) => {
             "hotel" : hotelId,
         }
         
-        fetch(`https://hotel-booking-backend-u4dd.onrender.com/hotel/bookings/`,
+        fetch(`https://hussainrifad.pythonanywhere.com/hotel/bookings/`,
             {
                 method : 'POST',
                 headers : {'Content-Type':'application/json'},
@@ -172,7 +172,7 @@ const post_review = (event) => {
         hotel
     }
 
-    fetch(`https://hotel-booking-backend-u4dd.onrender.com/hotel/reviews/`,
+    fetch(`https://hussainrifad.pythonanywhere.com/hotel/reviews/`,
         {
             method : 'POST',
             headers : {'Content-Type':'application/json'},
