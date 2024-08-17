@@ -1,6 +1,6 @@
 const loadData = () => {
     const id = localStorage.getItem('user_id')
-    fetch(`https://hussainrifad.pythonanywhere.com/customer/list/${id}/`)
+    fetch(`http://127.0.0.1:8080/customer/list/${id}/`)
     .then(res => res.json())
     .then(data => {
         console.log(data);
@@ -27,7 +27,7 @@ const update_data = (event) => {
         phone,
     }
 
-    fetch(`https://hussainrifad.pythonanywhere.com/customer/list/${id}/`,
+    fetch(`http://127.0.0.1:8080/customer/list/${id}/`,
         {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
@@ -44,6 +44,17 @@ const update_data = (event) => {
 const render_form = (data) => {
     const form = document.getElementById('form-section')
     form.innerHTML = `
+        <div class="-mx-3 flex flex-wrap">
+            <div class="w-full px-3 sm:w-1/2">
+                <div class="mb-5">
+                    <label for="Total Balance" class="mb-3 block text-base font-medium text-[#07074D]">
+                        Total Balance
+                    </label>
+                    <input readonly type="number" value=${data.balance} name="balance" id="balance"
+                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                </div>
+            </div>
+        </div>
         <form onsubmit=update_data(event)>
             <div class="-mx-3 flex flex-wrap">
                 <div class="w-full px-3 sm:w-1/2">
@@ -91,7 +102,7 @@ const render_form = (data) => {
 
             <div>
                 <button
-                    class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
+                    class="hover:shadow-form w-full md:w-1/2 lg:w-1/3 rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
                     Update Profile
                 </button>
             </div>

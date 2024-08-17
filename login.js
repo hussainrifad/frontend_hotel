@@ -5,9 +5,7 @@ const handle_login = (event) => {
         username : form.username.value,
         password : form.password.value
     }
-    console.log(info);
-
-    fetch('https://hussainrifad.pythonanywhere.com/customer/login/',
+    fetch('http://127.0.0.1:8080/customer/login/',
         {
             method : 'POST',
             headers : {'Content-Type':'application/json'},
@@ -16,18 +14,28 @@ const handle_login = (event) => {
     )
     .then(res => res.json())
     .then(data => {
-        const token = data.token
-        const user_id = data.user_id
-        localStorage.setItem('token', token)
-        localStorage.setItem('user_id', user_id)
+        if(data.token && data.user_id){
+            const token = data.token
+            const user_id = data.user_id
+            localStorage.setItem('token', token)
+            localStorage.setItem('user_id', user_id)
+            window.alert('you have successfully loged in')
+        }
+        else{
+            window.alert(`${data.error}. please register first`)
+        }
     })
-    .catch(error => console.log(error))
+    .catch(error => {
+        if(error){
+            window.alert(error)
+        }
+    })
 }
 
 const handle_logout = (event) => {
     event.preventDefault();
 
-    fetch('https://hussainrifad.pythonanywhere.com/customer/logout/')
+    fetch('http://127.0.0.1:8080/customer/logout/')
     .then(res => res.json())
     .then(data => console.log(data))
     .catch(error => console.log(error))

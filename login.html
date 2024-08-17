@@ -11,36 +11,42 @@
     <script src="login.js"></script>
     <title>Login</title>
 </head>
-<body>
+<body class="poppins-regular">
     <Header>
-        <nav id="navbar" class="bg-gray-200 shadow shadow-gray-300 w-100 px-8 md:px-auto">
+        <nav id="navbar" class="bg-gray-900 shadow shadow-gray-300 w-100 px-8 md:px-auto">
         </nav>
     </Header>
 
     <div class="flex items-center justify-center p-12">
-        <div class="mx-auto w-full max-w-[550px] bg-white">
-            <form>
-                <div class="mb-5">
-                    <label for="username" class="mb-3 block text-base font-medium text-[#07074D]">
-                        User Name
-                    </label>
-                    <input type="text" name="username" id="username" placeholder="User name"
-                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
-                </div>
-                <div class="mb-5">
-                    <label for="password" class="mb-3 block text-base font-medium text-[#07074D]">
-                        Password
-                    </label>
-                    <input type="password" name="password" id="password" placeholder="Enter your password"
-                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
-                </div>
-                <div>
-                    <button onclick=handle_login(event)
-                        class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
-                        Login
-                    </button>
-                </div>
-            </form>
+        <div class="container mx-auto px-6 flex relative py-16 items-center justify-center">
+            <div class="sm:w-2/3 lg:w-2/5 flex flex-col relative z-20">
+                <h3 class="text-3xl font-semibold mb-10 text-center">Login</h3>
+                <form>
+                    <div class="mb-5">
+                        <label for="username" class="mb-3 block text-base font-medium text-[#07074D]">
+                            User Name
+                        </label>
+                        <input type="text" name="username" id="username" placeholder="User name"
+                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                    </div>
+                    <div class="mb-5">
+                        <label for="password" class="mb-3 block text-base font-medium text-[#07074D]">
+                            Password
+                        </label>
+                        <input type="password" name="password" id="password" placeholder="Enter your password"
+                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                    </div>
+                    <div>
+                        <button onclick=handle_login(event)
+                            class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
+                            Login
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="hidden sm:block sm:w-1/2 lg:w-1/2 relative">
+                <img src="images/login.jpg" class="max-w-xs md:max-w-sm m-auto"/>
+            </div>
         </div>
     </div>
     <Footer id="footer-section">

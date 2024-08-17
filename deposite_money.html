@@ -9,26 +9,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
     <script src="deposite_money.js"></script>
-    <title>My Profile</title>
+    <title>Login</title>
 </head>
-<body class="container mx-auto">
+<body class="poppins-regular">
     <Header>
-        <nav id="navbar" class="bg-gray-200 shadow shadow-gray-300 w-100 px-8 md:px-auto">
+        <nav id="navbar" class="bg-gray-900 shadow shadow-gray-300 w-100 px-8 md:px-auto">
         </nav>
     </Header>
-    <Form onsubmit=handle_deposite_money(event) class="flex items-center gap-5 p-10">
-        <div class="w-full sm:w-1/2">
-            <div>
-                <input required type="number" name="amount" id="amount" placeholder="Enter amount" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+    <div class="min-h-screen container mx-auto">
+        <form onsubmit=handle_deposite_money(event) class="flex items-center gap-5 p-10">
+            <div class="w-full sm:w-1/2">
+                <div>
+                    <input required type="number" name="amount" id="amount" placeholder="Enter amount" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                </div>
             </div>
-        </div>
-        <div>
-            <button
-                class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
-                Deposite
-            </button>
-        </div>
-    </Form>
+            <div>
+                <button
+                    class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
+                    Deposite
+                </button>
+            </div>
+        </form>
+    </div>
     <Footer id="footer-section">
 
     </Footer>

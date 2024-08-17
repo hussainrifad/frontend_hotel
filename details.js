@@ -1,6 +1,6 @@
 const hotel_detail = () => {
     const id = new URLSearchParams(window.location.search).get("hotelId")
-    fetch(`https://hussainrifad.pythonanywhere.com/hotel/list/${id}/?format=json`)
+    fetch(`http://127.0.0.1:8080/hotel/list/${id}/?format=json`)
     .then(res => res.json())
     .then((data) => {
         render_details(data)
@@ -16,7 +16,7 @@ const render_details = (hotel) => {
     child.innerHTML = `
             <div class="flex flex-wrap -mx-4">
                 <div class="w-full lg:w-2/3 px-4 mb-8 lg:mb-0">
-                    <img class="w-full rounded-lg shadow-lg" src=${hotel.photo}>
+                    <img class="w-full rounded-lg shadow-lg" src=${hotel.photoUrl}>
                 </div>
                 <div class="w-full lg:w-1/3 px-4">
                     <h1 class="text-4xl font-bold mb-4">${hotel.name}</h1>
@@ -48,7 +48,7 @@ const render_details = (hotel) => {
 }
 
 const fetch_reviews = (id) => {
-    fetch(`https://hussainrifad.pythonanywhere.com/hotel/reviews/get/${id}/?format=json`)
+    fetch(`http://127.0.0.1:8080/hotel/reviews/get/${id}/?format=json`)
     .then(res => res.json())
     .then((data) => {
         render_reviews(data)
@@ -57,21 +57,37 @@ const fetch_reviews = (id) => {
 }
 
 const render_reviews = (data) => {
-    console.log(data)
     const parent = document.getElementById('hotel-review-section')
+    const user_id = localStorage.getItem('user_id')
     data.forEach( review => {
         const div = document.createElement('div')
         div.innerHTML = `
-            <div class="border p-3 shadow-xl">
-            <p>${review.review}</p>
-            <div class="my-2 flex justify-between">
-            <p class="text-sm">${review.created_at}</p>
-            </div>
+            <div class="flex flex-col justify-between rounded-md shadow shadow-2xl bg-gray-100 p-8 shadow-sm max-w-sm mx-auto">
+                ${parseInt(user_id) === review.customer ? `
+                    <div class="flex justify-between">
+                    <button onclick=handle_edit(${review.id}) class="bg-green-500 px-3 py-1 rounded">Edit</button>
+                    <button onclick=handle_delete(${review.id}) class="bg-red-500 px-3 py-1 rounded">Delete</button>
+                    </div>
+                `:`<div></div>`}
+                <p class="my-4 mb-0 text-black font-normal leading-relaxed tracking-wide text-gray-400">
+                    ${review.review}
+                </p>
+                <div class="mt-6 flex items-center gap-6 ">
+                    <div class="h-10 w-10 overflow-hidden rounded-full shadow-sm outline-neutral-800">
+                        <div class="relative inline-block overflow-hidden rounded-lg border-neutral-800">
+                            <img alt="" src="https://randomuser.me/api/portraits/women/2.jpg" width="50" height="50"
+                                decoding="async" data-nimg="1" class="inline-block " loading="lazy" style="color: transparent;">
+                        </div>
+                    </div>
+                    <div>
+                        <p class="leading-relaxed tracking-wide text-black">${review.ratings}</p>
+                        <p class="text-xs leading-relaxed tracking-wide text-black ">${review.created_at}</p>
+                    </div>
             </div>
         `
-        div.classList.add("bg-gray-200")
         parent.appendChild(div)
     });
+    parent.classList.add('flex', 'flex-wrap')
 }
 
 const handle_modal = (id) => {
@@ -96,12 +112,11 @@ const handle_modal = (id) => {
                         </div>
                         <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                             <h3 class="text-lg leading-6 font-medium text-gray-900">
-                                Modal Title
+                                Booking Confirmation
                             </h3>
                             <div class="mt-2">
                                 <p class="text-sm leading-5 text-gray-500">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-                                    mollitia inventore quod. Yay!
+                                    Are you sure you want to book this hotel room ?
                                 </p>
                             </div>
                         </div>
@@ -129,14 +144,15 @@ const handle_modal = (id) => {
 }
 
 const book_confirmation = (hotelId) => {
-    const customer = localStorage.getItem('user_id')
+    const customer = parseInt(localStorage.getItem('user_id'))
+
     if(customer){
         const info = {
-            customer,
-            "hotel" : hotelId,
+            'customer' : customer,
+            'hotel' : hotelId,
         }
-        
-        fetch(`https://hussainrifad.pythonanywhere.com/hotel/bookings/`,
+                
+        fetch(`https://127.0.0.1:8080/hotel/bookings/`,
             {
                 method : 'POST',
                 headers : {'Content-Type':'application/json'},
@@ -145,9 +161,19 @@ const book_confirmation = (hotelId) => {
         )
         .then(res => res.json())
         .then((data) => {
-            console.log(data)
+            if(data.created_at){
+                window.alert('You have successfully booked this room')
+                window.location.href = 'index.html'
+            }
+            else{
+                window.alert(data)
+                window.location.href = 'index.html'
+            }
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+            window.alert(error)
+            window.location.href = 'index.html'            
+        })
         remove_modal()
     }
     else{
@@ -160,19 +186,31 @@ const remove_modal = () => {
     modal.remove()
 }
 
+// post review section 
+
 const post_review = (event) => {
     event.preventDefault()
     const review = event.target.review.value
+    const ratings = event.target.ratings.value
     const customer = localStorage.getItem('user_id')
     const hotel = new URLSearchParams(window.location.search).get("hotelId")
 
     const info = {
+        ratings,
         review,
         customer,
         hotel
     }
 
-    fetch(`https://hussainrifad.pythonanywhere.com/hotel/reviews/`,
+    // checking booked rooms 
+    // fetch(`http://127.0.0.1:8080/hotel/reviews/is_booked/${hotel_id}/${parseInt(user_id)}`)
+    // .then(res => res.json())
+    // .then((data) => {
+    //     console.log(data)
+    // })
+    // .catch(error => console.log(error))
+    
+    fetch(`https://127.0.0.1:8080/hotel/reviews/`,
         {
             method : 'POST',
             headers : {'Content-Type':'application/json'},
@@ -185,3 +223,54 @@ const post_review = (event) => {
     })
     .catch(error => console.log(error))
 } 
+
+const handle_delete = (id) => {
+    token = localStorage.getItem('token')
+    fetch(`http://127.0.0.1:8080/hotel/reviews/${id}`,
+        {
+            method : 'DELETE',
+        }
+    )
+    .then(res => res.json())
+    .then((data) => {
+        window.alert('post deleted successfully')
+    })
+    .catch(error => {
+        window.alert(error)
+    })
+}
+
+const handle_edit = (id) => {
+    fetch(`http://127.0.0.1:8080/hotel/reviews/${id}`)
+    .then(res => res.json())
+    .then((data) =>{
+        const edit_post = document.getElementById('edit_post')
+        const post = document.createElement('div')
+        post.innerHTML = `
+            <div class="flex flex-col justify-between rounded-md shadow shadow-2xl bg-gray-100 p-8 shadow-sm max-w-sm mx-auto">
+                <form onsubmit=post_review(event) class="p-2">
+                    <div class="w-full sm:w-1/2 my-5">
+                        <div>
+                            <input required type="text" value=${data.review} name="review" id="review" placeholder="Share your review" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                        </div>
+                    </div>
+                    <div class="w-full sm:w-1/2 my-5">
+                        <div>
+                            <input required type="number" value=${data.ratings} name="ratings" id="ratings" placeholder="Rate this hotel out of 5" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                        </div>
+                    </div>
+                    <div>
+                        <button
+                            class="hover:shadow-form sm:w-1/5 rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
+                            Post
+                        </button>
+                    </div>
+                </form>
+            </div>
+        `
+        edit_post.appendChild(post)
+    })
+    .catch(error => {
+        window.alert(error)
+    })
+}

@@ -25,7 +25,7 @@ const handle_registration = (event) => {
         phone,
     }
 
-    fetch('https://hussainrifad.pythonanywhere.com/customer/registration/',
+    fetch('http://127.0.0.1:8080/customer/registration/',
         {
             method : 'POST',
             headers: {'Content-Type': "application/json"},
@@ -34,11 +34,16 @@ const handle_registration = (event) => {
     )
     .then(res => res.json())
     .then(data => {
-        console.log(data)
+        if(data === 'success'){
+            window.alert('Please check your email to activate your account')
+            window.location.href = 'login.html'
+        }
+        else{
+            window.alert(data)
+        }
     })
-    .catch(error => 
-        window.alert('password must contain lower case, upper case number and spcial character')
+    .catch(error =>{
+        console.log(error)
+    }
     )
-    
-    console.log('myname')
 }

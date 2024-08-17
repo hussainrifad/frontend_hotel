@@ -13,26 +13,34 @@
 </head>
 <body class="poppins-regular">
     <Header>
-        <nav id="navbar" class="bg-gray-200 shadow shadow-gray-300 w-100 px-8 md:px-auto">
+        <nav id="navbar" class="bg-gray-900 shadow shadow-gray-300 w-100 px-8 md:px-auto">
         </nav>
     </Header>
     <div class="bg-gray-100">
         <div id="hotel-detail-section" class="container mx-auto px-4 py-8">
         </div>
         <div id="post-review-section" class="container mx-auto px-4 py-8">
-            <Form onsubmit=post_review(event) class="p-2">
+            <form onsubmit=post_review(event) class="p-2">
                 <div class="w-full sm:w-1/2 my-5">
                     <div>
                         <input required type="text" name="review" id="review" placeholder="Share your review" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                     </div>
                 </div>
+                <div class="w-full sm:w-1/2 my-5">
+                    <div>
+                        <input required type="number" name="ratings" id="ratings" placeholder="Rate this hotel out of 5" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                    </div>
+                </div>
                 <div>
                     <button
-                        class="hover:shadow-form w-1/5 rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
+                        class="hover:shadow-form sm:w-1/5 rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
                         Post
                     </button>
                 </div>
-            </Form>
+            </form>
+        </div>
+        <div id="edit_post">
+
         </div>
         <div id="hotel-review-section" class="container mx-auto px-4 py-8">
 
