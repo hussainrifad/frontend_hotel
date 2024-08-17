@@ -5,7 +5,7 @@ const handle_login = (event) => {
         username : form.username.value,
         password : form.password.value
     }
-    fetch('http://127.0.0.1:8080/customer/login/',
+    fetch('https://hussainrifad.pythonanywhere.com/customer/login/',
         {
             method : 'POST',
             headers : {'Content-Type':'application/json'},
@@ -36,7 +36,7 @@ const handle_login = (event) => {
 const handle_logout = (event) => {
     event.preventDefault();
 
-    fetch('http://127.0.0.1:8080/customer/logout/')
+    fetch('https://hussainrifad.pythonanywhere.com/customer/logout/')
     .then(res => res.json())
     .then(data => console.log(data))
     .catch(error => console.log(error))

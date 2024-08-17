@@ -25,7 +25,7 @@ const handle_registration = (event) => {
         phone,
     }
 
-    fetch('http://127.0.0.1:8080/customer/registration/',
+    fetch('https://hussainrifad.pythonanywhere.com/customer/registration/',
         {
             method : 'POST',
             headers: {'Content-Type': "application/json"},

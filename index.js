@@ -1,8 +1,10 @@
 const fetch_hotel = async () => {
-    fetch('http://127.0.0.1:8080/hotel/list/?format=json')
+    fetch('https://hussainrifad.pythonanywhere.com/hotel/list/?format=json')
     .then(res => res.json())
     .then((data) => {
         display_hotel(data)
+        console.log(data);
+        
     })
     .catch(error => console.log(error))
 }
@@ -11,7 +13,6 @@ fetch_hotel()
 const display_hotel = (hotels) => {
     const parent = document.getElementById('hotel-section')
     hotels.forEach( hotel => {
-        console.log(hotel)
         const div = document.createElement('div')
         div.innerHTML = `
             <div class="rounded overflow-hidden shadow-lg flex flex-col">
