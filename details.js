@@ -41,7 +41,7 @@ const render_details = (hotel) => {
                             Book Now
                         </button>`
                         :
-                        `<button disabled class="bg-green-500 hover:bg-grey-300 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        `<button disabled class="bg-grey-300 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                             type="button">
                             No room left
                         </button>`
