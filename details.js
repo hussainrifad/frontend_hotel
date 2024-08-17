@@ -35,7 +35,7 @@ const render_details = (hotel) => {
                         <p class="text-lg">${hotel.address}</p>
                         <p class="text-lg">Country : ${hotel.country}</p>
                     </div>
-                    ${hotel.rooms <= 0 ?
+                    ${hotel.rooms != 0 ?
                         `<button onclick="handle_modal(${hotel.id})" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                             type="button">
                             Book Now
