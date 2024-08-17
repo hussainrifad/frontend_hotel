@@ -1,6 +1,6 @@
 const loadData = () => {
     const id = localStorage.getItem('user_id')
-    fetch(`http://127.0.0.1:8080/customer/list/${id}/`)
+    fetch(`https://hussainrifad.pythonanywhere.com/customer/list/${id}/`)
     .then(res => res.json())
     .then(data => {
         console.log(data);
@@ -27,7 +27,7 @@ const update_data = (event) => {
         phone,
     }
 
-    fetch(`http://127.0.0.1:8080/customer/list/${id}/`,
+    fetch(`https://hussainrifad.pythonanywhere.com/customer/list/${id}/`,
         {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
@@ -109,3 +109,11 @@ const render_form = (data) => {
         </form>`
 }
 
+const redirect_to = () => {
+    const token = localStorage.getItem('token')
+    if(!token){
+        window.location.href = 'login.html'
+    }
+}
+
+redirect_to()

@@ -89,7 +89,7 @@ navBar()
 const logout = () => {
     const token = localStorage.getItem('token')
 
-    fetch(`http://127.0.0.1:8080/customer/logout/`,{
+    fetch(`https://hussainrifad.pythonanywhere.com/customer/logout/`,{
         method : 'GET',
         headers:{
             Authorization: `Token ${token}`,
@@ -101,6 +101,7 @@ const logout = () => {
             console.log(data)
             localStorage.removeItem('token')
             localStorage.removeItem('user_id')
+            window.location.href = 'login.html'
     })
     .catch(err => console.log(err))
 }

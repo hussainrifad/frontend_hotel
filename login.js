@@ -20,6 +20,7 @@ const handle_login = (event) => {
             localStorage.setItem('token', token)
             localStorage.setItem('user_id', user_id)
             window.alert('you have successfully loged in')
+            window.location.href = 'index.html'
         }
         else{
             window.alert(`${data.error}. please register first`)
@@ -40,3 +41,13 @@ const handle_logout = (event) => {
     .then(data => console.log(data))
     .catch(error => console.log(error))
 }
+
+const redirect_to = () => {
+    const user_id = localStorage.getItem('user_id')
+    const token = localStorage.getItem('token')
+    if(token && user_id){
+        window.location.href = 'profile.html'
+    }
+}
+
+redirect_to()

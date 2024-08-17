@@ -22,5 +22,5 @@ const handle_upload = (event) => {
 }
 
 // const handle_imageupload = (url) => {
-//     fetch(`http://127.0.0.1:8080/hotel/list/${}`)
+//     fetch(`https://hussainrifad.pythonanywhere.com/hotel/list/${}`)
 // }

@@ -47,3 +47,13 @@ const handle_registration = (event) => {
     }
     )
 }
+
+const redirect_to = () => {
+    const user_id = localStorage.getItem('user_id')
+    const token = localStorage.getItem('token')
+    if(token && user_id){
+        window.location.href = 'profile.html'
+    }
+}
+
+redirect_to()

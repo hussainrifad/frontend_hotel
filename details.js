@@ -1,6 +1,6 @@
 const hotel_detail = () => {
     const id = new URLSearchParams(window.location.search).get("hotelId")
-    fetch(`http://127.0.0.1:8080/hotel/list/${id}/?format=json`)
+    fetch(`https://hussainrifad.pythonanywhere.com/hotel/list/${id}/?format=json`)
     .then(res => res.json())
     .then((data) => {
         render_details(data)
@@ -48,7 +48,7 @@ const render_details = (hotel) => {
 }
 
 const fetch_reviews = (id) => {
-    fetch(`http://127.0.0.1:8080/hotel/reviews/get/${id}/?format=json`)
+    fetch(`https://hussainrifad.pythonanywhere.com/hotel/reviews/get/${id}/?format=json`)
     .then(res => res.json())
     .then((data) => {
         render_reviews(data)
@@ -203,7 +203,7 @@ const post_review = (event) => {
     }
 
     // checking booked rooms 
-    // fetch(`http://127.0.0.1:8080/hotel/reviews/is_booked/${hotel_id}/${parseInt(user_id)}`)
+    // fetch(`https://hussainrifad.pythonanywhere.com/hotel/reviews/is_booked/${hotel_id}/${parseInt(user_id)}`)
     // .then(res => res.json())
     // .then((data) => {
     //     console.log(data)
@@ -226,7 +226,7 @@ const post_review = (event) => {
 
 const handle_delete = (id) => {
     token = localStorage.getItem('token')
-    fetch(`http://127.0.0.1:8080/hotel/reviews/${id}`,
+    fetch(`https://hussainrifad.pythonanywhere.com/hotel/reviews/${id}`,
         {
             method : 'DELETE',
         }
@@ -241,7 +241,7 @@ const handle_delete = (id) => {
 }
 
 const handle_edit = (id) => {
-    fetch(`http://127.0.0.1:8080/hotel/reviews/${id}`)
+    fetch(`https://hussainrifad.pythonanywhere.com/hotel/reviews/${id}`)
     .then(res => res.json())
     .then((data) =>{
         const edit_post = document.getElementById('edit_post')
