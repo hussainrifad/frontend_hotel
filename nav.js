@@ -28,7 +28,7 @@ const navBar = () => {
                     <div>
                         <div class="hidden md:ml-6 md:flex md:space-x-8 md:justify-around">
                             <div class="flex gap-10 ml-10">
-                                <a href="index.html" class="border-b-2 border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">Explore</a>
+                                <a href="explore.html" class="border-b-2 border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">Explore</a>
                                 <a href="about.html" class="border-b-2 border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">About</a>
                                 <a href="contact.html" class="border-b-2 border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">Contact</a>
                             </div>
@@ -56,7 +56,7 @@ const navBar = () => {
                 <!-- Mobile menu -->
                 <div id="mobile-menu" class="md:hidden">
                     <div class="pt-8 pb-3 space-y-1">
-                        <a href="index.html" class="border-l-4 border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 text-base font-medium">Explore</a>
+                        <a href="explore.html" class="border-l-4 border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 text-base font-medium">Explore</a>
                         <a href="about.html" class="border-l-4 border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 text-base font-medium">About</a>
                         <a href="contact.html" class="border-l-4 border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 text-base font-medium">Contact</a>
                     </div>

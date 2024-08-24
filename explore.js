@@ -12,7 +12,7 @@ fetch_hotel()
 
 const display_hotel = (hotels) => {
     const parent = document.getElementById('hotel-section')
-    hotels.slice(0,3).forEach( hotel => {
+    hotels.forEach( hotel => {
         const div = document.createElement('div')
         div.innerHTML = `
             <div class="rounded overflow-hidden shadow-lg flex flex-col">
